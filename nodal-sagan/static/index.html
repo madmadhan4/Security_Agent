@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pull Request · SecureCode Agent</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="icon" href="https://github.githubassets.com/favicons/favicon.png">
+</head>
+
+<body>
+    <div class="gh-header">
+        <div class="container">
+            <div class="repo-breadcrumb">
+                <span class="repo-owner">mock-org</span> / <span class="repo-name">secure-app</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="container main-content">
+        <div class="pr-header">
+            <h1 id="prTitle">Waiting for Simulation...</h1>
+            <div class="pr-meta">
+                <span class="state state-open" id="prState">Open</span>
+                <span class="meta-text">
+                    <span class="user">hacker-agent</span> wants to merge 1 commit into <span class="branch">main</span>
+                    from <span class="branch">feature/update</span>
+                </span>
+            </div>
+        </div>
+
+        <div id="agent-graph" class="agent-graph">
+            <div class="agent-node" id="agent-supervisor">Supervisor</div>
+            <div class="agent-node" id="agent-hacker">Hacker</div>
+            <div class="agent-node" id="agent-fixer">Fixer</div>
+            <div class="agent-node" id="agent-github">GitHub</div>
+
+            <div class="connection conn-sup-hack"></div>
+            <div class="connection conn-sup-fix"></div>
+            <div class="connection conn-sup-git"></div>
+
+            <div class="packet packet-hack"></div>
+            <div class="packet packet-fix"></div>
+            <div class="packet packet-merge"></div>
+        </div>
+
+        <div class="pr-tabs">
+            <button class="tab-btn active" data-tab="conversation">Conversation</button>
+            <button class="tab-btn" data-tab="checks">Checks <span class="badge" id="checksCount">0</span></button>
+            <button class="tab-btn" data-tab="files">Files Changed <span class="badge" id="filesCount">1</span></button>
+        </div>
+
+        <div class="tab-content active" id="conversation">
+            <div class="controls-section">
+                <select id="languageSelect">
+                    <option value="python">Python</option>
+                    <option value="javascript">JavaScript</option>
+                    <option value="abap">ABAP</option>
+                    <option value="java">Java</option>
+                    <option value="go">Go</option>
+                    <option value="ruby">Ruby</option>
+                </select>
+                <button id="startBtn" class="btn btn-primary" onclick="startSimulation()">Start Simulation</button>
+            </div>
+
+            <div class="timeline" id="timeline">
+                <!-- Timeline items will be injected here -->
+                <div class="timeline-item">
+                    <div class="timeline-avatar"></div>
+                    <div class="timeline-comment">
+                        <div class="comment-header">
+                            <strong>System</strong> commented now
+                        </div>
+                        <div class="comment-body">
+                            Ready to start simulation. Select a language above.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-content" id="checks">
+            <div class="checks-container">
+                <div class="check-sidebar">
+                    <div class="check-item active">
+                        <span class="status-icon pending"></span>
+                        <span class="check-name">Security Simulation</span>
+                    </div>
+                </div>
+                <div class="check-output">
+                    <div class="console-logs" id="logs">
+                        <span class="log-line">Waiting for logs...</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-content" id="files">
+            <div class="diff-layout">
+                <div class="file-sidebar">
+                    <div class="file-list-header">Files Changed</div>
+                    <ul id="fileList" class="file-list">
+                        <!-- Files injected here -->
+                    </ul>
+                </div>
+                <div class="diff-container" id="diffContainer">
+                    <!-- Diff View -->
+                    <div class="diff-header">
+                        <span id="filenameDisplay">Select a file...</span>
+                    </div>
+                    <div class="diff-grid">
+                        <div class="diff-col">
+                            <h4>ORIGINAL (VULNERABLE)</h4>
+                            <pre><code id="vulnerableCode"></code></pre>
+                        </div>
+                        <div class="diff-col">
+                            <h4>FIXED (SECURE)</h4>
+                            <pre><code id="secureCode"></code></pre>
+                        </div>
+                        <div class="diff-col">
+                            <h4>UNIT TESTS</h4>
+                            <pre><code id="testCode"></code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/app.js"></script>
+</body>
+
+</html>
